@@ -59,7 +59,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 
                     //权限验证，根据token取得已登录帐户
                     JsonResult<LoginAccount> loginResult=authService.loginValidate(token==null?"error":token);
-                    if(loginResult.getCode().equals("200") && loginResult.getEntity()!=null && loginResult.getEntity().getPermissions()!=null){
+                    if("200".equals(loginResult.getCode()) && loginResult.getEntity()!=null && loginResult.getEntity().getPermissions()!=null){
                         String url=request.getRequestURI().substring(request.getContextPath().length());
                         if(url.startsWith("/") && url.length()>1){
                             url=url.substring(1);

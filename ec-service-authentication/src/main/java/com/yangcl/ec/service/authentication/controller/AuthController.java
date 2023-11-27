@@ -79,9 +79,9 @@ public class AuthController {
         //参数校验
         if(loginAccount==null ||
                 loginAccount.getAccountId()==null ||
-                loginAccount.getAccountId().equals("") ||
+                "".equals(loginAccount.getAccountId()) ||
                 loginAccount.getSysName()==null ||
-                loginAccount.getSysName().equals("")){
+                "".equals(loginAccount.getSysName())){
             jsonResult.setCode(AppEnum.AuthResultCode.InputNull.getCode());
             jsonResult.setMessage(AppEnum.AuthResultCode.InputNull.getMessage());
             return jsonResult;
@@ -113,7 +113,7 @@ public class AuthController {
         //创建返回包装类型
         JsonResult<LoginAccount> jsonResult = new JsonResult<LoginAccount>();
         //参数校验
-        if (token == null || token.equals("")) {
+        if (token == null || "".equals(token)) {
             jsonResult.setCode(AppEnum.AuthResultCode.InputNull.getCode());
             jsonResult.setMessage(AppEnum.AuthResultCode.InputNull.getMessage());
             return jsonResult;
@@ -151,7 +151,7 @@ public class AuthController {
         }
         try {
             //参数校验
-            if (token == null || token.equals("")) {
+            if (token == null || "".equals(token)) {
                 jsonResult.setCode(AppEnum.AuthResultCode.InputNull.getCode());
                 jsonResult.setMessage(AppEnum.AuthResultCode.InputNull.getMessage());
                 return jsonResult;
