@@ -35,20 +35,20 @@ public class ToolsController {
     }
 
 
-    @RequestMapping(value = "/tools/accounts",method = RequestMethod.GET)
+    @GetMapping(value = "/tools/accounts")
     public String accountList(Model model){
         List<LoginAccount> accounts=accountRepository.getAccounts();
         model.addAttribute("accounts",accounts);
         return "accounts";
     }
 
-    @RequestMapping(value = "/tools/account/remove",method = RequestMethod.GET)
+    @GetMapping(value = "/tools/account/remove")
     public String removeAccount(@RequestParam String accountId,@RequestParam String sysName,@RequestParam String token){
         accountRepository.removeAccount(accountId,sysName,token);
         return "redirect:/tools/accounts";
     }
 
-    @RequestMapping(value = "/tools/sessions",method = RequestMethod.GET)
+    @GetMapping(value = "/tools/sessions")
     public String sessionList(Model model){
         List<TokenSession> sessions=sessionRepository.getSessions();
         model.addAttribute("sessions",sessions);

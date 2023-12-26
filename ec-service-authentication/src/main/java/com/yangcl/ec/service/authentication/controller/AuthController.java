@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
 import sun.rmi.runtime.Log;
 
 import javax.annotation.PostConstruct;
@@ -67,7 +68,7 @@ public class AuthController {
      * @param loginAccount 帐户
      * @return JsonResult
      */
-    @RequestMapping(value = "/auth/account/login",method = RequestMethod.POST)
+    @PostMapping(value = "/auth/account/login")
     @ResponseBody
     public JsonResult<LoginAccount> loginIn(@RequestBody LoginAccount loginAccount){
 
@@ -107,7 +108,7 @@ public class AuthController {
         return jsonResult;
     }
 
-    @RequestMapping(value = "/auth/account/validate",method = RequestMethod.POST)
+    @PostMapping(value = "/auth/account/validate")
     @ResponseBody
     public JsonResult<LoginAccount> loginValidate(@RequestBody String token){
         //创建返回包装类型
@@ -139,7 +140,7 @@ public class AuthController {
         return jsonResult;
     }
 
-    @RequestMapping(value = "/auth/account/refresh",method = RequestMethod.POST)
+    @PostMapping(value = "/auth/account/refresh")
     @ResponseBody
     public JsonResult<LoginAccount> refreshAccount(@RequestBody String token){
         //创建返回包装类型

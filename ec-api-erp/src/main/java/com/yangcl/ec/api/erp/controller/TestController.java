@@ -5,6 +5,7 @@ import com.yangcl.ec.common.entity.common.JsonResult;
 import com.yangcl.ec.common.entity.common.LoginAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,25 +20,25 @@ public class TestController {
     @Autowired
     private AuthService authService;
 
-    @RequestMapping(value = "/test/login",method = RequestMethod.GET)
+    @GetMapping(value = "/test/login")
     @ResponseBody
     public String testLogin(){
         return "Login Page";
     }
 
-    @RequestMapping(value = "/test/index",method = RequestMethod.GET)
+    @GetMapping(value = "/test/index")
     @ResponseBody
     public String testIndex(){
         return "Index Page";
     }
 
-    @RequestMapping(value = "/test/error",method = RequestMethod.GET)
+    @GetMapping(value = "/test/error")
     @ResponseBody
     public String testError(){
         return "Error Page";
     }
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @GetMapping(value = "/test")
     @ResponseBody
     public String test(){
         LoginAccount loginAccount=new LoginAccount();

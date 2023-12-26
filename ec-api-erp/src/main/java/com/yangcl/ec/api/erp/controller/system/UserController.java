@@ -10,6 +10,7 @@ import com.yangcl.ec.common.entity.common.LoginAccount;
 import com.yangcl.ec.common.entity.erp.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
 import zipkin.internal.moshi.Json;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class UserController {
     @Autowired
     private AuthService authService;
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     public JsonResult<UserDto> userLogin(HttpServletRequest request,@RequestBody User user){
         if(user==null || user.getLoginName()==null || user.getLoginName()==""){
             return new JsonResult<UserDto>("400","帐号不能为空！");

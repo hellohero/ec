@@ -51,7 +51,7 @@ public class SessionController {
     }
 
 
-    @RequestMapping(value = "/auth/session/created",method = RequestMethod.POST)
+    @PostMapping(value = "/auth/session/created")
     @ResponseBody
     public String createdSession(@RequestBody TokenSession session){
         //创建token
@@ -77,7 +77,7 @@ public class SessionController {
         return session.getToken();
     }
 
-    @RequestMapping(value = "/auth/session/validate",method = RequestMethod.POST)
+    @PostMapping(value = "/auth/session/validate")
     @ResponseBody
     public TokenSession sessionValidate(@RequestBody String token){
         TokenSession tokenSession=jwtUtil.getSessionFromToken(token);
@@ -102,7 +102,7 @@ public class SessionController {
         return onlineSession;
     }
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
+    @GetMapping(value = "/test")
     @ResponseBody
     public String test(){
 
@@ -113,7 +113,7 @@ public class SessionController {
         return token;
     }
 
-    @RequestMapping(value = "/test2",method = RequestMethod.GET)
+    @GetMapping(value = "/test2")
 
     public String test2(@RequestParam String token){
         TokenSession result=this.sessionValidate(token);
