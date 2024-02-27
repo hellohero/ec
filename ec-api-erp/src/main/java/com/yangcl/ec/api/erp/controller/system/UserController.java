@@ -61,7 +61,7 @@ public class UserController {
             loginAccount.setLastLoginIP( request.getHeader("X-Real-IP"));
 
             JsonResult<LoginAccount> loginResult=authService.loginIn(loginAccount);
-            if(loginResult.getCode().equals("200")){
+            if("200".equals(loginResult.getCode())){
                 userDto.setToken(loginResult.getEntity().getToken());
                 return new JsonResult<UserDto>(loginResult.getCode(),loginResult.getMessage(),loginResult.getEntity().getToken(),userDto);
             }else{
