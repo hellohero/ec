@@ -19,13 +19,13 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employee",method = RequestMethod.GET)
+    @GetMapping(value = "/employee")
     public Employee getEmployee(long sysno){
         return employeeService.get(sysno);
     }
 
     @AuthPassport
-    @RequestMapping(value = "/employees",method = RequestMethod.GET)
+    @GetMapping(value = "/employees")
     public JsonResult<Employee> getEmployeeList(@RequestParam(value = "employeename",required = false) String employeeName,
                                                 @RequestParam(value = "employeesex",required = false) Integer employeeSex,
                                                 @RequestParam(value = "pageNo",required = false) Integer pageNo,
