@@ -4,6 +4,7 @@ import com.netflix.ribbon.proxy.annotation.Http;
 import com.yangcl.ec.api.erp.service.authentication.AuthService;
 import com.yangcl.ec.common.entity.common.JsonResult;
 import com.yangcl.ec.common.entity.common.LoginAccount;
+import io.github.pixee.security.Newlines;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import sun.rmi.runtime.Log;
@@ -64,7 +65,7 @@ public class ValidateTokenFilter implements Filter {
             JsonResult<LoginAccount> loginResult=authService.loginValidate(token==null?"error":token);
             if(loginResult.getCode().equals("200")){
                 loginResult=authService.refreshAccount(loginResult.getEntity().getToken());
-                response.setHeader("Authorization",loginResult.getEntity().getToken());
+                response.setHeader("Authorization",Newlines.stripAll(loginResult.getEntity().getToken()));
                 filterChain.doFilter(request,response);
                 return;
             }
